@@ -23,7 +23,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 
 ## MCP Tools (25 tools across 6 categories)
 
-### Node (4 tools) — Public
+### Public Node Tools
 | Tool | Description |
 |------|-------------|
 | `minima_get_status` | Node status, sync state, block height, peers |
@@ -31,7 +31,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 | `minima_get_transaction` | Transaction details by ID |
 | `minima_get_network_info` | Network peers and connection status |
 
-### Wallet (4 tools)
+### Tools for wallets
 | Tool | Auth | Description |
 |------|------|-------------|
 | `minima_get_balance` | Public | Wallet balance (confirmed/unconfirmed) |
@@ -39,7 +39,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 | `minima_get_transactions` | Auth | Transaction history with pagination |
 | `minima_get_coins` | Auth | List all coins/tokens in wallet |
 
-### Smart Contracts (4 tools)
+### Tools for smart contracts
 | Tool | Auth | Description |
 |------|------|-------------|
 | `minima_deploy_contract` | Auth | Deploy a smart contract script |
@@ -47,7 +47,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 | `minima_list_contracts` | Auth | List all deployed contracts |
 | `minima_get_contract` | Auth | Query contract state |
 
-### Tokens (4 tools)
+### Tokens tools
 | Tool | Auth | Description |
 |------|------|-------------|
 | `minima_create_token` | Auth | Create a custom token |
@@ -55,7 +55,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 | `minima_transfer_token` | Auth | Transfer a token |
 | `minima_get_token_info` | Public | Token details by ID |
 
-### Keys & Vault (5 tools)
+### Keys & Vault tools
 | Tool | Auth | Description |
 |------|------|-------------|
 | `minima_generate_key` | Auth | Generate a new key pair |
@@ -64,7 +64,7 @@ A containerized Go MCP (Model Context Protocol) server for Minima blockchain int
 | `minima_verify_signature` | Public | Verify a cryptographic signature |
 | `minima_get_vault` | Auth | Vault information |
 
-### MiniDAPPs (5 tools)
+### MiniDAPPs tools
 | Tool | Auth | Description |
 |------|------|-------------|
 | `minima_list_minidapps` | Auth | List installed MiniDAPPs |
