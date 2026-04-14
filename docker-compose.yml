@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  minima-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minima-mcp
+    ports:
+      - "3001:3001"
+    environment:
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=3001
+      - MINIMA_DATA_HOST=minima-node
+      - MINIMA_DATA_PORT=9004
+      - MINIMA_MINIDAPP_HOST=minima-node
+      - MINIMA_MINIDAPP_PORT=9005
+      - LOG_LEVEL=info
+      - RATE_LIMIT_RPS=10
+      - RATE_LIMIT_BURST=20
+      - AUDIT_ENABLED=true
+      - AUDIT_LOG_DIR=/app/audit-logs
+      - AUDIT_MAX_AGE_DAYS=90
+      - AUTH_ENABLED=true
+      - AUTH_MODE=tiered
+    volumes:
+      - audit-logs:/app/audit-logs
+    depends_on:
+      minima-node:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  minima-node:
+    image: minimaglobal/minima:latest
+    container_name: minima-node
+    ports:
+      - "9004:9004"
+      - "9005:9005"
+      - "9003:9003"
+    volumes:
+      - minima-data:/home/minima/.minima
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9004"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  audit-logs:
+  minima-data:

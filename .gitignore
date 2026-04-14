@@ -1,0 +1,24 @@
+# Build artifacts
+bin/
+*.exe
+*.out
+*.test
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Audit logs
+audit-logs/
+
+# Minima data
+.minima/
